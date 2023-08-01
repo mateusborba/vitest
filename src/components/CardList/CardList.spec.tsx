@@ -11,40 +11,40 @@ describe("CardsList", () => {
 
   const listSize = 4;
 
-  it.skip("should render title 'Card List'", () => {
+  it("should render title 'Card List'", () => {
     render(<CardList size={listSize} />);
     const title = screen.getByTestId("title");
     expect(title.textContent).toBe("Card List");
   });
 
-  it.skip("should render CardList with the right size", () => {
+  it("should render CardList with the right size", () => {
     render(<CardList size={listSize} />);
     const cards = screen.getAllByRole("menuitem");
     expect(cards).toHaveLength(listSize);
   });
 
-  it.skip("should render CardList with custom size", () => {
+  it("should render CardList with custom size", () => {
     const customSize = 8;
     render(<CardList size={customSize} />);
     const cards = screen.getAllByRole("menuitem");
     expect(cards).toHaveLength(customSize);
   });
 
-  it.skip("should the cards be 'down'", () => {
+  it("should the cards be 'down'", () => {
     render(<CardList size={listSize} />);
     const cards = screen.getAllByRole("menuitem");
     const cardsDown = cards.filter((card) => card.textContent === "down");
     expect(cardsDown).toHaveLength(listSize);
   });
 
-  it.skip("should not to have cards with 'up'", () => {
+  it("should not to have cards with 'up'", () => {
     render(<CardList size={listSize} />);
     const cards = screen.getAllByRole("menuitem");
     const cardsUp = cards.filter((card) => card.textContent === "up");
     expect(cardsUp).toHaveLength(0);
   });
 
-  it.skip("should the cards be 'up' when clicked", async () => {
+  it("should the cards be 'up' when clicked", async () => {
     const user = userEvent.setup();
     const selectedCard = 2;
 
@@ -62,7 +62,7 @@ describe("CardsList", () => {
     });
   });
 
-  it.skip("should the cards be 'up' when clicked and have just one card 'up' on the same time", async () => {
+  it("should the cards be 'up' when clicked and have just one card 'up' on the same time", async () => {
     const user = userEvent.setup();
     const firstSelected = 0;
     const secondSelected = 2;
@@ -70,7 +70,7 @@ describe("CardsList", () => {
     render(<CardList size={listSize} />);
     const cards = screen.getAllByRole("menuitem");
 
-    // selecte first card
+    // selected first card
     user.click(cards[firstSelected]);
 
     await waitFor(() => {

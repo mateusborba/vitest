@@ -1,5 +1,5 @@
 import { CardList } from "./components/CardList";
 
 export function App() {
-  return <CardList />;
+  return <CardList size={4} />;
 }
