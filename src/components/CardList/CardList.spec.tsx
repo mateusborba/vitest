@@ -91,4 +91,25 @@ describe("CardsList", () => {
     // expect the cards with 'down' be the listSize - 1 => 3
     expect(cardsDown).toHaveLength(listSize - 1);
   });
+
+  it("should toggle card when clicked", async () => {
+    const user = userEvent.setup();
+
+    render(<CardList size={1} />);
+    const card = screen.getByRole("menuitem");
+
+    expect(card.textContent).toBe("down");
+
+    user.click(card);
+
+    await waitFor(() => {
+      expect(card.textContent).toBe("up");
+    });
+
+    user.click(card);
+
+    await waitFor(() => {
+      expect(card.textContent).toBe("down");
+    });
+  });
 });

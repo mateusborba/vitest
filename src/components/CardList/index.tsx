@@ -16,7 +16,7 @@ export function CardList({ size }: CardListProps) {
   const handleToggle = (cardId: number) => {
     const updatedCards = cardsList.map((card) => {
       if (card.id === cardId) {
-        return { ...card, isDown: false };
+        return { ...card, isDown: !card.isDown };
       }
       return { ...card, isDown: true };
     });
